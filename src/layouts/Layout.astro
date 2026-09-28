@@ -1,3 +1,6 @@
+---
+import '../styles/global.css';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,28 +11,7 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Bousai Guide — Japan hazard map</title>
 	</head>
-	<body>
+	<body class="grid h-dvh grid-rows-[45dvh_55dvh] overflow-hidden bg-stone-50 font-sans text-sm leading-relaxed text-slate-800 min-[651px]:grid-cols-[380px_minmax(0,1fr)] min-[651px]:grid-rows-1">
 		<slot />
 	</body>
 </html>
-
-<!-- Shared styles also apply to slotted components and map controls. -->
-<style is:global>
-	* { box-sizing: border-box; }
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-	body { margin: 0; font: 15px/1.5 system-ui, sans-serif; color: #20302c; display: grid; grid-template-columns: 340px minmax(0, 1fr); height: 100dvh; }
-	h1 { font-size: 30px; margin: 0; letter-spacing: -1px; }
-	a { color: #146551; }
-	header p { margin-top: 0; color: #54665c; }
-	footer { font-size: 12px; margin-top: 22px; }
-	:focus-visible { outline: 3px solid #2478c7; outline-offset: 3px; }
-
-	@media (max-width: 650px) {
-		body { grid-template-columns: 1fr; grid-template-rows: 58dvh 42dvh; }
-	}
-</style>

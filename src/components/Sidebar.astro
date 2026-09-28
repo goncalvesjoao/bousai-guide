@@ -1,24 +1,44 @@
 ---
-
+import layers from '../resources/layers.json';
 ---
 
-<aside aria-label="Hazard layers">
-	<header><h1>Bousai Guide</h1><p>Japan hazard map</p></header>
-	<p>Explore official hazard data across Japan. Turn layers on to compare areas.</p>
-	<p class="notice">Unshaded areas may have no data. They are not guaranteed safe. Overlapping colours are best inspected one layer at a time.</p>
-	<p id="map-status" role="status">Loading map…</p>
-	<div id="layers"></div>
-	<footer>
-		<p>Combined coverage includes available regional data; coverage and model dates vary.</p>
-		<p>Flood-duration data for Osaka’s Neyagawa basin is temporarily withdrawn by GSI.</p>
-		<a href="https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html">Official catalogue, coverage &amp; updates</a>
-	</footer>
+<aside aria-label="Hazard layers" class="row-start-2 flex min-h-0 flex-col border-t border-stone-200 bg-stone-50 min-[651px]:col-start-1 min-[651px]:row-start-1 min-[651px]:border-t-0 min-[651px]:border-r">
+	<header class="shrink-0 border-b border-stone-200 bg-white px-5 py-4 min-[651px]:px-6 min-[651px]:py-6">
+		<p class="mb-1 text-[11px] font-semibold tracking-[0.16em] text-emerald-800 uppercase">Japan hazard map</p>
+		<h1 class="text-2xl font-bold tracking-tight text-slate-900">Bousai Guide<span class="ml-2 text-sm font-normal text-slate-500" lang="ja">防災</span></h1>
+		<p class="mt-1 text-xs text-slate-600">Explore a place. Understand its hazards.</p>
+	</header>
+	<div class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 min-[651px]:px-5">
+		<div class="mb-5 rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-xs leading-relaxed text-amber-950">
+			<p class="font-semibold">No shading does not mean safe.</p>
+			<p class="mt-1">Data may be missing. Inspect one layer at a time when colours overlap.</p>
+		</div>
+		<div class="mb-3 flex items-center justify-between">
+			<h2 class="font-semibold text-slate-900">Hazard layers</h2>
+			<span class="rounded-full bg-stone-200 px-2 py-0.5 text-[11px] font-medium text-slate-600">{layers.length} available</span>
+		</div>
+		<p id="map-status" role="status" class="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900 empty:hidden">Loading map…</p>
+		<noscript><p class="mb-3 text-sm text-amber-900">Enable JavaScript to use the interactive map and layer controls.</p></noscript>
+		<div id="layers" class="space-y-2">
+			{layers.map(layer => (
+				<section class="rounded-lg border border-stone-200 bg-white transition-colors has-[:checked]:border-emerald-700 has-[:checked]:bg-emerald-50 motion-reduce:transition-none">
+					<label class="flex min-h-12 cursor-pointer items-start gap-3 rounded-t-lg px-3 pt-3 pb-2 hover:bg-stone-50 has-[:disabled]:cursor-wait">
+						<input id={`layer-${layer.id}`} type="checkbox" checked={layer.id === 'tsunami'} disabled aria-describedby={`description-${layer.id}`} class="mt-0.5 size-5 shrink-0 cursor-pointer accent-emerald-700 disabled:cursor-wait disabled:opacity-50" />
+						<span class="text-[13px] leading-5 font-semibold">{layer.name}</span>
+					</label>
+					<p id={`description-${layer.id}`} lang="ja" class="mr-3 ml-11 text-[11px] leading-5 text-slate-500">{layer.japanese}</p>
+					<details class="mx-3 ml-11 mb-1 text-xs">
+						<summary class="min-h-11 cursor-pointer content-center rounded text-emerald-800 hover:underline">Official legend <span class="text-slate-500">(Japanese)</span></summary>
+						<img src={layer.legend} loading="lazy" alt={`${layer.name}: official colour legend`} class="mb-3 h-auto w-full rounded bg-white" />
+					</details>
+				</section>
+			))}
+		</div>
+		<footer class="mt-6 border-t border-stone-200 pt-4 pb-2 text-xs leading-relaxed text-slate-500">
+			<h2 class="mb-2 font-semibold text-slate-700">About this data</h2>
+			<p>Combined coverage includes available regional data; coverage and model dates vary.</p>
+			<p class="mt-2">Flood-duration data for Osaka’s Neyagawa basin is temporarily withdrawn by GSI.</p>
+			<a class="mt-2 inline-flex min-h-11 items-center font-medium text-emerald-800 underline underline-offset-4 hover:text-emerald-950" href="https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html">Official catalogue, coverage &amp; updates ↗</a>
+		</footer>
+	</div>
 </aside>
-
-<style>
-	aside { overflow-y: auto; padding: 24px; background: #fafbf8; border-right: 1px solid #dce3dc; }
-
-	@media (max-width: 650px) {
-		aside { grid-row: 2; border-top: 1px solid #dce3dc; padding: 16px; }
-	}
-</style>

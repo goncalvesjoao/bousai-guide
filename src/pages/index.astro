@@ -3,23 +3,9 @@ import Sidebar from '../components/Sidebar.astro';
 import Map from '../components/Map.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
 	<Sidebar />
 	<Map />
 </Layout>
-
-<!-- Layer rows are created by JavaScript without Astro scope attributes. -->
-<style is:global>
-	.notice { padding: 12px; background: #fff2d5; border-radius: 6px; font-size: 13px; }
-	.layer { padding: 14px 0; border-bottom: 1px solid #dce3dc; }
-	label { display: flex; align-items: start; gap: 10px; cursor: pointer; font-weight: 600; }
-	input { margin-top: 5px; accent-color: #146551; width: 17px; height: 17px; flex-shrink: 0; }
-	small { display: block; margin: 4px 0 6px 27px; color: #54665c; }
-	details { margin-left: 27px; font-size: 13px; }
-	summary { cursor: pointer; color: #146551; }
-	details img { display: block; max-width: 100%; width: 200px; margin-top: 10px; background: white; }
-</style>

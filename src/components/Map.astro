@@ -6,7 +6,6 @@ import layers from '../resources/layers.json'
 
 setWorkerUrl(workerUrl)
 const status = document.querySelector<HTMLParagraphElement>('#map-status')!
-const list = document.querySelector<HTMLDivElement>('#layers')!
 const map = new Map({
   container: 'map',
   style: 'https://tiles.openfreemap.org/styles/liberty',
@@ -23,15 +22,8 @@ map.on('error', () => {
   status.textContent = 'Some map data could not load. Missing shading does not mean an area is safe.'
 })
 
-// Local catalogue strings are trusted; no external/user HTML is inserted.
 for (const layer of layers) {
-  const row = document.createElement('section')
-  row.className = 'layer'
-  row.innerHTML = `<label><input type="checkbox" disabled ${layer.id === 'tsunami' ? 'checked' : ''}>${layer.name}</label>
-    <small>${layer.japanese}</small>
-    <details><summary>Official legend (Japanese)</summary><img src="${layer.legend}" loading="lazy" alt="${layer.name}: official colour legend"></details>`
-  const toggle = row.querySelector<HTMLInputElement>('input')!
-  list.append(row)
+  const toggle = document.getElementById(`layer-${layer.id}`) as HTMLInputElement
   const update = () => {
     if (toggle.checked && !map.getSource(layer.id)) {
       map.addSource(layer.id, {
@@ -53,15 +45,4 @@ map.on('load', () => {
 })
 </script>
 
-<main id="map" aria-label="Japan hazard map"></main>
-
-<!-- Map status is rendered in the sibling Sidebar component. -->
-<style is:global>
-	#map { min-width: 0; min-height: 0; }
-	#map-status { color: #854016; font-size: 13px; }
-	#map-status:empty { display: none; }
-
-	@media (max-width: 650px) {
-		#map { grid-row: 1; }
-	}
-</style>
+<main id="map" aria-label="Japan hazard map" class="row-start-1 min-h-0 min-w-0 min-[651px]:col-start-2"></main>
