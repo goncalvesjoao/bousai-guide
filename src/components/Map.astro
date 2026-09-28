@@ -1,8 +1,8 @@
+<script>
 import { Map, NavigationControl, setWorkerUrl } from 'maplibre-gl'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import './style.css'
-import layers from './layers.json'
+import layers from '../resources/layers.json'
 
 setWorkerUrl(workerUrl)
 const status = document.querySelector<HTMLParagraphElement>('#map-status')!
@@ -51,3 +51,17 @@ for (const layer of layers) {
 map.on('load', () => {
   if (status.textContent === 'Loading map…') status.textContent = ''
 })
+</script>
+
+<main id="map" aria-label="Japan hazard map"></main>
+
+<!-- Map status is rendered in the sibling Sidebar component. -->
+<style is:global>
+	#map { min-width: 0; min-height: 0; }
+	#map-status { color: #854016; font-size: 13px; }
+	#map-status:empty { display: none; }
+
+	@media (max-width: 650px) {
+		#map { grid-row: 1; }
+	}
+</style>
