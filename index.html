@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bousai Guide — Japan hazard map</title>
+</head>
+<body>
+  <aside aria-label="Hazard layers">
+    <header><h1>Bousai Guide</h1><p>Japan hazard map</p></header>
+    <p>Explore official hazard data across Japan. Turn layers on to compare areas.</p>
+    <p class="notice">Unshaded areas may have no data. They are not guaranteed safe. Overlapping colours are best inspected one layer at a time.</p>
+    <p id="map-status" role="status">Loading map…</p>
+    <div id="layers"></div>
+    <footer>
+      <p>Combined coverage includes available regional data; coverage and model dates vary.</p>
+      <p>Flood-duration data for Osaka’s Neyagawa basin is temporarily withdrawn by GSI.</p>
+      <a href="https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html">Official catalogue, coverage &amp; updates</a>
+    </footer>
+  </aside>
+  <main id="map" aria-label="Japan hazard map"></main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
