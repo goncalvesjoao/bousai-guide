@@ -1,13 +1,28 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
 <script>
 import { Map, NavigationControl, setWorkerUrl } from 'maplibre-gl'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import layers from '../resources/layers.json'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const t = useTranslations(getLangFromUrl(new URL(window.location.href)))
 
 setWorkerUrl(workerUrl)
 const status = document.querySelector<HTMLParagraphElement>('#map-status')!
 const map = new Map({
   container: 'map',
+  locale: {
+    'Map.Title': t('Map.Title'),
+    'NavigationControl.ZoomIn': t('NavigationControl.ZoomIn'),
+    'NavigationControl.ZoomOut': t('NavigationControl.ZoomOut'),
+    'NavigationControl.ResetBearing': t('NavigationControl.ResetBearing'),
+    'AttributionControl.ToggleAttribution': t('AttributionControl.ToggleAttribution'),
+    'AttributionControl.MapFeedback': t('AttributionControl.MapFeedback'),
+  },
   style: 'https://tiles.openfreemap.org/styles/liberty',
   center: [138, 37],
   zoom: 4.5,
@@ -19,7 +34,7 @@ const map = new Map({
 })
 map.addControl(new NavigationControl())
 map.on('error', () => {
-  status.textContent = 'Some map data could not load. Missing shading does not mean an area is safe.'
+  status.textContent = t('error')
 })
 
 for (const layer of layers) {
@@ -28,7 +43,7 @@ for (const layer of layers) {
     if (toggle.checked && !map.getSource(layer.id)) {
       map.addSource(layer.id, {
         type: 'raster', tiles: [layer.url], tileSize: 256, minzoom: 2, maxzoom: 17,
-        attribution: '<a href="https://disaportal.gsi.go.jp/">GSI Hazard Map Portal</a>',
+        attribution: `<a href="https://disaportal.gsi.go.jp/">${t('attribution')}</a>`,
       })
       map.addLayer({ id: layer.id, type: 'raster', source: layer.id, paint: { 'raster-opacity': 0.65 } },
         map.getStyle().layers.find(item => item.type === 'symbol')?.id)
@@ -41,8 +56,8 @@ for (const layer of layers) {
   map.on('load', () => { toggle.disabled = false; update() })
 }
 map.on('load', () => {
-  if (status.textContent === 'Loading map…') status.textContent = ''
+  if (status.textContent === t('loading')) status.textContent = ''
 })
 </script>
 
-<main id="map" aria-label="Japan hazard map" class="row-start-1 min-h-0 min-w-0 min-[651px]:col-start-2"></main>
+<main id="map" aria-label={t('map')} class="row-start-1 min-h-0 min-w-0 min-[651px]:col-start-2"></main>

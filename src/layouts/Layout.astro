@@ -1,15 +1,29 @@
 ---
 import '../styles/global.css';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
 ---
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Bousai Guide — Japan hazard map</title>
+		<title>{t('title')}</title>
+		{locale === 'en' && <script is:inline id="language-redirect">
+			let preferredLanguage;
+			try { preferredLanguage = localStorage.getItem('bousai-language'); } catch {}
+			if (preferredLanguage !== 'en' && preferredLanguage !== 'ja') {
+				preferredLanguage = (navigator.languages ?? [navigator.language])
+					.find(language => /^(en|ja)(-|$)/i.test(language))?.split('-')[0].toLowerCase();
+			}
+			if (preferredLanguage === 'ja') {
+				window.location.replace('/ja/' + window.location.search + window.location.hash);
+			}
+		</script>}
 	</head>
 	<body class="grid h-dvh grid-rows-[45dvh_55dvh] overflow-hidden bg-stone-50 font-sans text-sm leading-relaxed text-slate-800 min-[651px]:grid-cols-[380px_minmax(0,1fr)] min-[651px]:grid-rows-1">
 		<slot />

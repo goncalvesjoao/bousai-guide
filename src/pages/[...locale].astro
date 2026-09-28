@@ -1,0 +1,17 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import Map from '../components/Map.astro';
+import Layout from '../layouts/Layout.astro';
+import { languages, defaultLang, showDefaultLang } from '../i18n/ui';
+
+export function getStaticPaths() {
+	return Object.keys(languages).map(locale => ({
+		params: { locale: !showDefaultLang && locale === defaultLang ? undefined : locale },
+	}));
+}
+---
+
+<Layout>
+	<Sidebar />
+	<Map />
+</Layout>
