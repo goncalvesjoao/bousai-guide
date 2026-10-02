@@ -1,6 +1,6 @@
 # Product details
 
-Working draft, 2 October 2026. Repository evidence describes what exists today. Hypotheses and proposals need validation or an owner decision. The owner selected English-speaking residents assessing a home or neighbourhood as the initial audience and situation. No user research interviews, demand measurements, or delivery commitments have been recorded in this document.
+Working draft, 2 October 2026. Repository evidence describes what exists today. Hypotheses and proposals need validation or an owner decision. The owner selected English-speaking residents assessing a home or neighbourhood as the initial audience and situation, confirmed the initial outcome and scope, and described the project as personal work intended to grow into a free public service. No user research interviews, demand measurements, or delivery commitments have been recorded in this document. The owner confirmed shared understanding of the first-version product scope at the conclusion of the discovery interview on 2 October 2026. Participant access, numeric validation targets, and sustainable maintenance capacity remain open planning items; they do not change the agreed scope.
 
 ## 1. Idea
 
@@ -12,7 +12,7 @@ The repository does not yet implement preparedness guides, address search, evacu
 
 ## 2. Problem
 
-The owner reports that the official hazard map they used was only in Japanese and was difficult to navigate. This is firsthand evidence of language and navigation barriers for one person. The specific navigation difficulties and their effect on the owner's task still need clarification.
+The owner reports difficulty making sense of what they were seeing in the official hazard map, describing its interface as too convoluted and its Japanese language as another barrier. This is firsthand evidence from one person. The owner identified excessive data and options, including past years and filters with technical terms, as obstacles for an ordinary resident. They perceive the interface as oriented toward research; this is their assessment, not evidence of the official tool's intended audience.
 
 Draft problem statement: English-speaking residents assessing a home or neighbourhood need hazard information they can read and a map they can navigate easily. Japanese-language information and difficult navigation can prevent them from finding and understanding the hazards relevant to a place.
 
@@ -38,7 +38,7 @@ Selected first persona: the English-speaking resident assessing a home or neighb
 
 The entries below are interview prompts and hypotheses. They are not participant quotations or observed feelings.
 
-Owner-reported experience, paraphrased: the official hazard map was only in Japanese and difficult to navigate. No feelings or specific navigation behaviour have been reported yet.
+Owner-reported experience, paraphrased: too much data, past-year options, and technical filter terminology made the display difficult to understand, compounded by the language barrier. No specific interaction sequence or feelings have been reported.
 
 | Candidate persona | Says or asks | Thinks | Does | Feels |
 | --- | --- | --- | --- | --- |
@@ -60,11 +60,17 @@ Selected first job: assessing a home or neighbourhood. Alert interpretation rema
 
 ## 3. Goal
 
-Proposed initial goal: help a resident inspect a familiar location, explain what a relevant hazard layer shows, recognise uncertainty or missing coverage, and identify an official source for further checking.
+Confirmed initial goal: help a resident inspect a location, explain the relevant mapped hazards, recognise uncertainty and the limits of unshaded areas, and identify an official source for further checking.
 
 Validate that outcome before expanding the guide. A working map proves implementation progress; it does not establish comprehension or preparedness.
 
-The owner confirmed the first user situation. The proposed outcome still needs agreement and evidence from users.
+The owner agreed to this outcome on 2 October 2026. Whether users can achieve it still needs validation. The first version should present a map of Japan with a sidebar that clearly explains that each item toggles a hazard layer. Layer colours and their relationship to the underlying map should be readily distinguishable. Detailed scenario explanations are not requested for this version. Household preparation and alerts remain later decisions.
+
+The owner clarified that the visual problem is distinguishing hazard shading from the underlying map, not obtaining a binary safe/unsafe verdict. The owner agreed to a muted grey basemap everywhere so hazard colours stand out, with a visible warning about unshaded areas. Grey means background map, not an assessment of coverage or safety. The current layer catalogue exposes no coverage mask distinguishing an unshaded assessed area from absent data.
+
+Confirmed interaction requirements: start with only the tsunami hazard layer selected; allow users to toggle additional hazards and display overlapping layers; include address/place search. The colour treatment must remain understandable with multiple layers visible. Provide a “View this layer only” action and a way to restore the previously selected layers. The selected default does not imply tsunami is the only relevant hazard.
+
+The owner confirmed that phones and desktop must both support the complete location-assessment task, including search, sidebar legends, layer toggles, and layer isolation/restoration. The sidebar should adapt to the available screen space.
 
 ## 4. Vision
 
@@ -72,7 +78,7 @@ Draft vision: people living in Japan can understand the disaster information rel
 
 The README supports a progression from exploring hazards to preparing supplies, planning with family, and understanding alerts. It does not establish their priority or release sequence.
 
-Decisions still needed include how broad the guide should become, which languages to support beyond the existing two, and who will maintain and review its content.
+Decisions still needed include how broad the guide should become and which languages to support beyond the existing two. The owner says their wife can read Japanese and can help maintain the content, alongside AI assistance. The owner selected AI-assisted drafting and source comparison first, with unresolved questions referred to their wife for Japanese-source review. Their wife is a fallback reviewer rather than a mandatory reviewer of every change. If AI and their wife cannot resolve a legend's meaning, retain the official legend and source link, mark the English explanation unavailable, and withhold the uncertain interpretation. Available review capacity remains unquantified.
 
 ## 5. Value Proposition
 
@@ -84,7 +90,7 @@ The key hypothesis is that clearer interpretation and a useful next step will he
 
 ## 6. Market Fit
 
-Product-market fit is unproven. The inspected repository contains no interview findings, usage analytics, willingness-to-pay evidence, or business-model decision.
+Product-market fit is unproven. The owner describes Bousai Guide as a personal project intended to grow into a free public service. No user research interview findings, usage analytics, or willingness-to-pay evidence have been recorded.
 
 An existing alternative is the [official Hazard Map Portal](https://disaportal.gsi.go.jp/). It supports overlapping hazard information, address and current-location lookup, and links to municipal hazard maps. Bousai Guide needs a reason for users to choose it beyond access to those datasets. These portal capabilities were checked on 2 October 2026.
 
@@ -92,7 +98,7 @@ Proposed fit hypothesis: English-speaking residents who need help interpreting J
 
 First comparison: ask participants to complete the same location-assessment task with Bousai Guide and their usual or official tool. Observe understanding, errors, and the next action they choose. If the official tool meets the need equally well, consider a focused explanatory guide that links to it.
 
-Owner decisions needed: public-service or commercial intent, sustainable maintenance, and whether willingness to pay is relevant. No market-size or revenue estimate is justified yet.
+The project purpose is confirmed: personal work intended to grow into a free public service. The owner can draw on their wife's Japanese-reading ability and AI assistance for maintenance; AI-assisted review is the first step, with unresolved questions referred to their wife. Unresolved interpretations are withheld, with the official legend and source link retained and the English explanation marked unavailable. Sustainable maintenance capacity remains unquantified. No market-size or revenue estimate is justified yet.
 
 ## 7. Success Metrics
 
@@ -114,7 +120,7 @@ Evidence inspected for this draft:
 
 | Source | What it establishes | Limits |
 | --- | --- | --- |
-| Owner discovery conversation, 2 October 2026 | Selected audience and situation; firsthand report of Japanese-language and navigation barriers in the official hazard map | One person's experience; specific navigation obstacles and prevalence among other residents are unknown |
+| Owner discovery conversation, 2 October 2026 | Selected audience and situation; agreed outcome and first scope; personal project intended to grow into a free public service; firsthand difficulty interpreting a convoluted Japanese-language map interface | One person's experience; excessive options and technical terminology identified, but prevalence among other residents is unknown |
 | [README](../README.md) | Intended progression from hazard map to preparedness companion | Does not prioritise audiences or establish demand |
 | [Map](../src/components/Map.astro) and [sidebar](../src/components/Sidebar.astro) | Current navigation, controls, legends, source links, and load-error messaging | Code inspection does not establish usability or live data availability |
 | [Layer catalogue](../src/resources/layers.json) | Twelve configured hazard layers with official tile and legend URLs | Configuration does not prove complete geographical coverage |
@@ -126,10 +132,10 @@ The official catalogue documents dataset-specific coverage limits and a temporar
 
 Proposed next research:
 
-1. Clarify where the owner got stuck navigating the official map and what they were trying to accomplish. Language and navigation barriers have been recorded as part of the motivation.
+1. Test whether excessive options, technical terminology, language barriers, and unclear layer colours also impede other residents. Past-year options and technical filters are the owner's concrete examples.
 2. Ask suitable participants about their most recent attempt to assess hazards or prepare, including what they used and where they got stuck. Recruitment and contact have not been authorised or performed.
 3. Observe the selected task in the current product and an existing alternative. Include Japanese-reading ability in the research context.
-4. Check explanations, translation accuracy, source attribution requirements, and coverage limitations against current official material before publishing new guidance. Identify an appropriate content reviewer.
+4. Check explanations, translation accuracy, source attribution requirements, and coverage limitations against current official material before publishing new guidance. Use AI-assisted drafting and comparison first; refer unresolved questions to the owner's Japanese-reading wife. If meaning remains unresolved, retain the official legend and source link, mark the English explanation unavailable, and withhold the uncertain interpretation.
 5. Record the findings here, then decide whether to improve map interpretation, add a focused guide, or narrow the product.
 
 Avoid collecting participants' exact home addresses in shared research notes. Use agreed example locations for task observation.
@@ -142,18 +148,19 @@ Confirmed initial audience: English-speaking residents of Japan assessing their 
 
 Candidate later audiences include household preparedness organisers and Japanese-speaking residents who value clearer interpretation. Tourists, employers, schools, and professional emergency responders have no established requirements in this repository and are not proposed for the first scope.
 
-Geographic scope today is a Japan-wide map with uneven source coverage. An initial validation study should use a bounded locality where the relevant official sources can be checked; the locality has not been selected.
+The intended first-version geographic scope is all Japan, using the available data with its uneven source coverage. The owner selected Tokyo and surrounding prefectures, including Chiba and Saitama, as the initial validation region. Specific public example locations remain to be selected.
 
 ## 10. Milestones and Timeline Decisions
 
-Proposed milestones are decision points, not a committed delivery schedule.
+The owner selected milestones without hard dates and confirmed there is no strict deadline for this personal project. The owner also agreed to separate implementation completion from readiness to share more widely. The milestones below are decision points, not a committed delivery schedule.
 
 | Milestone | Evidence or decision needed to proceed | Timing |
 | --- | --- | --- |
-| Confirm the first outcome | Audience and situation selected; purpose, useful outcome, and scope boundary still need agreement | Owner discussion in progress |
+| Confirm the first outcome | Audience, situation, purpose, useful outcome, and first scope boundary agreed | Confirmed 2 October 2026 |
 | Establish a baseline | Participants attempt the chosen task; findings identify the main obstacle and compare an alternative | After audience selection and participant availability |
-| Choose a focused improvement | Evidence supports a specific change, such as clearer legend interpretation or a short preparation guide | After baseline findings |
-| Validate the improvement | Repeat the task and check comprehension, uncertainty, and the proposed next step | After the focused change is available |
-| Decide whether to release or expand | Results support further work; source review, content ownership, and maintenance capacity are agreed | Pending validation |
+| Choose a focused improvement | Evidence supports a change within location assessment, such as clearer legend interpretation or simpler map controls | After baseline findings |
+| Implementation complete | Search, muted grey basemap, clear toggles and colour legends, overlapping layers, layer isolation/restoration, and explanation fallbacks work on phones and desktop | No hard date |
+| Ready to share | A small usability check with English-speaking residents shows they can find a location, interpret the selected hazard, and understand that unshaded does not mean safe | After implementation completion; participant access and numeric success targets remain unconfirmed |
+| Decide whether to expand | Validation findings support further work and maintenance capacity is sufficient | After the first-version usability check |
 
-No dates, effort estimates, participant access, or release commitments have been agreed. The owner's available time, any external deadline, and capacity for Japanese content review must inform the schedule. Expansion into alerts or emergency-time use needs a separate decision about authoritative sources, reliability, and maintenance.
+No effort estimates, participant access, or release commitments have been agreed. There is no strict deadline; hard dates are not required. The owner's available time and their wife's availability for Japanese content review will inform the pace. Expansion into alerts or emergency-time use needs a separate decision about authoritative sources, reliability, and maintenance.
